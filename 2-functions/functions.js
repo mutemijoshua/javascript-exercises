@@ -173,7 +173,7 @@ describe("functions", function() {
             // You're not allowed to define a new function here.
             // If you call getContext() here, you're a cheater! :)
             // ✏️ ADD CODE HERE ✏️
-            getcontext = getContext.bind(differentContext);
+            getContext = getContext.bind(differentContext);
 
             ////////////////////////////////////////////////////////////////////
 
@@ -307,7 +307,7 @@ describe("functions", function() {
                     // However, in this exercise you're only allowed to add code here.
                     // Is there a way to define a variable in a way that the code above will work?
                     // ✏️ ADD CODE HERE ✏️
-
+                    var myVariable;
 
                     ////////////////////////////////////////////////////////////////////
                 }
@@ -544,7 +544,8 @@ describe("functions", function() {
             // - returns the array with results in the end
             // ✏️ ADD CODE HERE ✏️
             function map(fn,array){
-                const result =new array(array.length);
+                const result =new Array(array.length);
+
                 for (let i = 0;i<array.length;i++){
                     result[i]=fn(array[i],i);
                 }
@@ -640,7 +641,7 @@ describe("functions", function() {
 
             // Now we're registering the service.handleEvent method so that
             // it will be called as soon as the event is emitted.
-            eventEmitter.addEventListener(service.handleEvent);
+            eventEmitter.addEventListener(service.handleEvent.bind(service));
             // Now let's emit the event. However, this will fail.
             // Find the reason why and fix it.
             eventEmitter.emit();
@@ -695,7 +696,7 @@ describe("functions", function() {
                     return function() {
                         this.doSomething();
                         this.doAnotherThing();
-                    };
+                    }.bind(this);
                 },
                 doSomething: function() {},
                 doAnotherThing: function() {}
